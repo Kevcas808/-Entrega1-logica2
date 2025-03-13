@@ -1,0 +1,24 @@
+package Tem;
+
+public class ListaCircular {
+
+    private Nodo cabeza = null;   // List start
+    private Nodo cola = null;    // List end
+
+    public void insertar(int x, int y) {     // Insert a new node with given coordinates
+        Nodo nuevo = new Nodo(x, y);
+        if (cabeza == null) {
+            cabeza = nuevo;
+            cola = nuevo;
+            cabeza.siguiente = cabeza;  // Circular link to itself
+        } else {
+            cola.siguiente = nuevo;
+            nuevo.siguiente = cabeza;   // Circular link back to head
+            cola = nuevo;
+        }
+    }
+
+    public Nodo getCabeza() {
+        return cabeza; 
+    }
+}
